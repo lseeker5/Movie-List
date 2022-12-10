@@ -1,0 +1,46 @@
+.App{
+    
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.MR{
+    width:30%;
+    margin-top: 1%;
+    display: inline-flex;
+    
+    justify-content: space-between;
+}
+
+.MN{
+    width:30%;
+    margin-top: 1%;
+    display: inline-flex;
+    
+    justify-content: space-between; 
+}
+
+.MN-input{
+    margin-left: 1%;
+}
+
+.MR-input{
+    margin-left: 1%;
+}
+
+.MR-label{
+font-size: larger;
+}
+
+.MN-label{
+    font-size: larger; 
+}
+
+.submit-btn{
+    margin-top: 2%;
+    font-size: x-large;
+}
+
