@@ -13,7 +13,16 @@ const db=mysql.createPool({
 })
 
 app.use(cors())
+app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
+
+app.get('/api/get',(req,res)=>{
+    const sqlGet='SELECT * from crud_1'
+    db.query(sqlGet,(err,result)=>{
+        console.log(err)
+        res.send(result)
+    })
+})
 
 
 app.post('/api/insert',(req,res)=>{
@@ -22,10 +31,12 @@ app.post('/api/insert',(req,res)=>{
 
     const sqlInsert="INSERT INTO crud_1 (movie_name,movie_review) VALUES (?,?)"
     db.query(sqlInsert,[movie_name,movie_review],(err,result)=>{
-        console.log(result)
+        console.log(err)
     })
     
 })
+
+
 
 app.listen(3001,()=>{
     console.log("Server is running")
