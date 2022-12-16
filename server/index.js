@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.get('/api/get',(req,res)=>{
     const sqlGet='SELECT * from crud_1'
     db.query(sqlGet,(err,result)=>{
-        console.log(err)
+        console.log(result)
         res.send(result)
     })
 })
