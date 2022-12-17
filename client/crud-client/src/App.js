@@ -1,6 +1,8 @@
 import './App.css';
+import './TableRow.css';
 import React from 'react'
 import Axios from 'axios'
+import TableRow from './TableRow'
 
 
 
@@ -24,6 +26,13 @@ function App() {
     })
   }
 
+  const TableRows=movie_list.map((val)=>{
+    return(
+      <TableRow {...val}/>
+    )
+  })
+
+
   return (
     <div className="App">
 
@@ -44,11 +53,14 @@ function App() {
       </div>
 
       <button onClick={submitReview} className='submit-btn'>Submit</button>
-      {movie_list.map((val)=>{
-        return(
-          <h1>{val.movie_name}{val.movie_review}</h1>
-        )
-      })}
+      
+      <table className='table'>
+        <tr className='tablerow'>
+          <td className='tabledata'>Movie Name</td>
+          <td className='tabledata'>Movie Review</td>
+        </tr>
+        {TableRows}
+      </table>
     </div>
   );
 }

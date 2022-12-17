@@ -1,0 +1,12 @@
+.tabledata{
+    border:2px solid red;
+    text-align: center;   
+}
+
+.table{
+    margin-top: 5%;
+    font-size:xx-large;
+    border: 10px solid black;
+    width:80%;
+    border-collapse: collapse;
+}
