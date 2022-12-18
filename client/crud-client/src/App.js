@@ -15,16 +15,19 @@ function App() {
     Axios.get("http://localhost:3001/api/get").then((response=>{
       setMovieList(response.data)
     }))
-  })
+  },[])
 
   const submitReview=()=>{
     Axios.post('http://localhost:3001/api/insert',{
       movie_name:movie_name,
       movie_review:movie_review
-    }).then(()=>{
-      alert("Your review has been submitted.")
     })
-  }
+      setMovieList([
+        ...movie_list,
+        {movie_name:movie_name,movie_review:movie_review}
+      ])
+    }
+  
 
   const TableRows=movie_list.map((val)=>{
     return(
