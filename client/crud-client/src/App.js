@@ -10,6 +10,7 @@ function App() {
   const[movie_name,setMovieName]=React.useState("")
   const[movie_review,setMovieReview]=React.useState("")
   const[movie_list,setMovieList]=React.useState([])
+  const[new_movie_review,setNewMovieReview]=React.useState("")
 
   React.useEffect(()=>{
     Axios.get("http://localhost:3001/api/get").then((response=>{
@@ -28,10 +29,37 @@ function App() {
       ])
     }
   
+    const deleteReview=(id)=>{
+      Axios.delete(`http://localhost:3001/api/delete/${id}`)
+      
+    }
+
+    const updateReview=(id)=>{
+      Axios.put(`http://localhost:3001/api/update/${id}`,{
+        new_movie_review:new_movie_review
+      })
+
+      setNewMovieReview("")
+      
+    }
+    
 
   const TableRows=movie_list.map((val)=>{
-    return(
-      <TableRow {...val}/>
+    return(   
+        <TableRow 
+        {...val}
+        clickedDelete={()=>{
+          deleteReview(val.id)
+        }}
+
+        clickedUpdate={(event)=>{
+            setNewMovieReview(event.target.value)
+        }}
+
+        clickedSubmit={()=>{
+          updateReview(val.id)
+        }}
+        />  
     )
   })
 
@@ -57,13 +85,16 @@ function App() {
 
       <button onClick={submitReview} className='submit-btn'>Submit</button>
       
-      <table className='table'>
-        <tr className='tablerow'>
-          <td className='tabledata'>Movie Name</td>
-          <td className='tabledata'>Movie Review</td>
-        </tr>
+      <div className='table'>
+      <div className='tablerow'>
+            <p className='tabledata'>Movie</p>
+            <p className='tabledata'>Review</p>
+            <button >DELETE</button>
+            <input type="text" ></input>
+            <button >UPDATE</button>
+        </div>
         {TableRows}
-      </table>
+      </div>
     </div>
   );
 }

@@ -35,7 +35,22 @@ app.post('/api/insert',(req,res)=>{
     
 })
 
+app.delete('/api/delete/:id',(req,res)=>{
+    const id=req.params.id
+    const sqlDelete="DELETE FROM crud_1 where id=?"
+    db.query(sqlDelete,id,(err,result)=>{
+        console.log(err)
+    })
+})
 
+app.put('/api/update/:id',(req,res)=>{
+    const id=req.params.id
+    const new_movie_review=req.body.new_movie_review
+    const sqlUpdate="UPDATE crud_1 SET movie_review=? WHERE id=?"
+    db.query(sqlUpdate,[new_movie_review,id],(err,result)=>{
+        console.log(err)
+    })
+})
 
 app.listen(3001,()=>{
     console.log("Server is running")

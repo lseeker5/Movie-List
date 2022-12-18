@@ -1,6 +1,9 @@
 .tabledata{
-    border:2px solid red;
-    text-align: center;   
+    width:50%;
+    border:3px solid orchid;
+    text-align: center;  
+    margin:0;
+     
 }
 
 .table{
@@ -9,4 +12,10 @@
     border: 10px solid black;
     width:80%;
     border-collapse: collapse;
+
+}
+
+.tablerow{
+    display:flex;
+    justify-content: space-around;
 }
